@@ -1,0 +1,32 @@
+builddir = build
+clags = -Wall
+includes = -lallegro -lallegro_main -lallegro_font -lallegro_primitives -lallegro_ttf
+
+rule compile
+  deps = gcc
+  depfile = $out.d
+  command = gcc -MMD -MF $out.d $cflags -c $in -o $out
+
+rule link_with_allegro
+  command = gcc $includes $in -o $out
+
+rule link
+  command = gcc $in -o $out
+
+# Game Section
+
+build $builddir/array.o: compile src/array.c
+build $builddir/game.o: compile src/game.c
+build $builddir/level.o: compile src/level.c
+build $builddir/mainmenu.o: compile src/mainmenu.c
+build $builddir/manager.o: compile src/manager.c
+build $builddir/vec.o: compile src/vec.c
+
+build $builddir/game: link_with_allegro $builddir/game.o $builddir/array.o $builddir/level.o $builddir/mainmenu.o $builddir/manager.o $builddir/vec.o
+
+# Test Section
+
+build $builddir/test.o: compile test/test.c
+build $builddir/test: link $builddir/test.o $builddir/array.o
+
+default $builddir/game $builddir/test
