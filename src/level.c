@@ -22,7 +22,7 @@ void level_create(game_state_t *gs) {
   pv[2] = vec_new(x + width, y + height);
   pv[3] = vec_new(x + width, y);
   poly_t *player_poly = poly_new(4, pv);
-  color_t color = { .r = 255, .g = 0, .b = 0 };
+  color_t color = { .r = 255, .g = 255, .b = 255 };
   entity_t *player = entity_new(player_poly, 1, color);
   array_t *entities = array_new(sizeof(entity_t *));
   array_add(entity_t *, entities, player);
