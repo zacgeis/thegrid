@@ -6,12 +6,14 @@ struct vec_t {
   double x, y;
 };
 
-double vec_length(vec_t v);
-vec_t vec_add(vec_t v1, vec_t v2);
-vec_t vec_sub(vec_t v1, vec_t v2);
-vec_t vec_scale(vec_t v, double s);
-double vec_dot(vec_t v1, vec_t v2);
-double vec_cross(vec_t v1, vec_t v2);
-vec_t vec_rotate(vec_t v, double angle, vec_t origin);
+vec_t *vec_new(double x, double y);
+void vec_free(vec_t *v);
+double vec_length(vec_t *v);
+void vec_add(vec_t *v1, vec_t *v2);
+void vec_sub(vec_t *v1, vec_t *v2);
+void vec_scale(vec_t *v, double s);
+double vec_dot(vec_t *v1, vec_t *v2);
+double vec_cross(vec_t *v1, vec_t *v2);
+void vec_rotate(vec_t *v, double angle, vec_t *origin);
 
 #endif

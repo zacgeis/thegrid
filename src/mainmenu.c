@@ -10,7 +10,7 @@ void mainmenu_create(game_state_t *gs) {
 
 }
 
-void mainmenu_update(game_state_t *gs) {
+void mainmenu_update(game_state_t *gs, double delta) {
   if (gs->keyboard->space) {
     manager_switch_scene(gs, LEVEL);
   }

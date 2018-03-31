@@ -10,6 +10,8 @@
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_primitives.h>
 
+#include "array.h"
+#include "poly.h"
 #include "vec.h"
 
 // Globals
@@ -24,6 +26,10 @@
 // Colors
 #define WHITE al_map_rgb(255, 255, 255)
 #define BLACK al_map_rgb(0, 0, 0)
+
+// Physics
+#define SPEED_BASE 5000
+#define FRICTION_BASE 5
 
 typedef struct keyboard_state_t keyboard_state_t;
 struct keyboard_state_t {
@@ -41,6 +47,30 @@ enum scene_t {
   NOSCENE, MAINMENU, LEVEL
 };
 
+typedef struct entity_t entity_t;
+typedef struct color_t color_t;
+struct color_t {
+  int r, g, b;
+};
+
+struct entity_t {
+  poly_t *poly;
+  vec_t force;
+  vec_t acc;
+  vec_t vel;
+  vec_t pos;
+  double mass;
+  // TODO: add something like static here?
+  color_t color;
+};
+
+
+typedef struct level_data_t level_data_t;
+struct level_data_t {
+  entity_t *player;
+  array_t *entities;
+};
+
 typedef struct game_state_t game_state_t;
 struct game_state_t {
   keyboard_state_t *keyboard;
@@ -48,6 +78,7 @@ struct game_state_t {
   scene_t scene;
   ALLEGRO_FONT *font;
   ALLEGRO_FONT *large_font;
+  level_data_t *level_data;
 };
 
 #endif

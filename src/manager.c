@@ -21,10 +21,10 @@ void manager_switch_scene(game_state_t *gs, scene_t scene) {
   }
 }
 
-void manager_update_scene(game_state_t *gs) {
+void manager_update_scene(game_state_t *gs, double delta) {
     switch (gs->scene) {
       case NOSCENE: break;
-      case MAINMENU: mainmenu_update(gs); break;
-      case LEVEL: level_update(gs); break;
+      case MAINMENU: mainmenu_update(gs, delta); break;
+      case LEVEL: level_update(gs, delta); break;
     }
 }

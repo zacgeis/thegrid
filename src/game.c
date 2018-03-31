@@ -25,6 +25,7 @@ int main(int argc, char **argv) {
     return -1;
   }
 
+  al_set_new_display_option(ALLEGRO_VSYNC, 1, ALLEGRO_REQUIRE);
   ALLEGRO_DISPLAY *display = al_create_display(WIDTH, HEIGHT);
   if (!display) {
     return -1;
@@ -149,7 +150,7 @@ int main(int argc, char **argv) {
         current_fps
       );
 
-      manager_update_scene(&gs);
+      manager_update_scene(&gs, delta);
 
       al_flip_display();
     }

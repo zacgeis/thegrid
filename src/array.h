@@ -7,13 +7,13 @@
 
 typedef struct array_t array_t;
 struct array_t {
-  char *buffer;
+  void **buffer;
   int capacity;
   int length;
   size_t object_size;
 };
 
-array_t *array_new(size_t object_size);
+array_t *array_new();
 void array_free(array_t *arr);
 #define array_get(type, arr, i) (* ((type *) _array_get(arr, i)))
 void *_array_get(array_t *arr, int i);
@@ -24,7 +24,7 @@ void array_remove(array_t *arr, int i);
 
 /*
 for (int i = 0; i < arr->length; i++) {
-  obj_t o = array_get_val(obj_t, arr, i);
+  obj_t o = array_get(obj_t, arr, i);
   printf("%f", o.x);
 }
 */

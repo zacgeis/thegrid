@@ -21,8 +21,10 @@ build $builddir/level.o: compile src/level.c
 build $builddir/mainmenu.o: compile src/mainmenu.c
 build $builddir/manager.o: compile src/manager.c
 build $builddir/vec.o: compile src/vec.c
+build $builddir/poly.o: compile src/poly.c
+build $builddir/world.o: compile src/world.c
 
-build $builddir/game: link_with_allegro $builddir/game.o $builddir/array.o $builddir/level.o $builddir/mainmenu.o $builddir/manager.o $builddir/vec.o
+build $builddir/game: link_with_allegro $builddir/game.o $builddir/array.o $builddir/level.o $builddir/mainmenu.o $builddir/manager.o $builddir/vec.o $builddir/poly.o $builddir/world.o
 
 # Test Section
 
