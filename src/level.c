@@ -36,10 +36,6 @@ void level_create(game_state_t *gs) {
 }
 
 void level_update(game_state_t *gs, double delta) {
-  if (gs->keyboard->space) {
-    manager_switch_scene(gs, MAINMENU);
-  }
-
   vec_t force = { .x = 0, .y = 0 };
   if (gs->keyboard->w) {
     vec_t up = { .x = 0, .y = -1 };
