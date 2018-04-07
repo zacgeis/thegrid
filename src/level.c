@@ -3,7 +3,7 @@
 #include "manager.h"
 #include "world.h"
 
-void level_destroy(game_state_t *gs) {
+void level_free(game_state_t *gs) {
   for (int i = 0; i < gs->level_data->entities->length; i++) {
     entity_free(array_get(entity_t *, gs->level_data->entities, i));
     array_remove(gs->level_data->entities, i);
@@ -13,7 +13,7 @@ void level_destroy(game_state_t *gs) {
   free(gs->level_data);
 }
 
-void level_create(game_state_t *gs) {
+void level_new(game_state_t *gs) {
   int width = 40;
   int height = 40;
   int x = 100;

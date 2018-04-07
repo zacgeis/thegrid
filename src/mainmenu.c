@@ -2,11 +2,11 @@
 
 #include "manager.h"
 
-void mainmenu_destroy(game_state_t *gs) {
+void mainmenu_new(game_state_t *gs) {
 
 }
 
-void mainmenu_create(game_state_t *gs) {
+void mainmenu_free(game_state_t *gs) {
 
 }
 
